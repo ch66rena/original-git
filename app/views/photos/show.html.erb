@@ -1,0 +1,8 @@
+<p>
+  <strong>Image:</strong>
+  <% if @photo.image? %>
+    <div class="thumbnail">
+    <%= image_tag @photo.image.url %>
+  </div>
+  <% end %>
+</p>

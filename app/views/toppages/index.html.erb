@@ -1,5 +1,11 @@
 <% if logged_in? %>
-  <p>ログイン完了ユーザ: <%= current_user.name %></p>
+
+  <% @photos.each do |photo| %>
+    <%= link_to(photo) do %>
+      <%= image_tag photo.image.try!(:thumb) %>
+    <% end %>
+  <% end %>
+
 <% else %>
   <div class="center jumbotron">
     <div class="text-center">

@@ -1,0 +1,18 @@
+<ul class="media-list">
+  <% photos.each do |photo| %>
+    <li class="media">
+      <div class="media-left">
+        <img class="media-object img-rounded" src="<%= gravatar_url(photo.user, { size: 50 }) %>" alt="">
+      </div>
+      <div class="media-body">
+        <div>
+          <%= link_to photo.user.name, user_path(photo.user) %> <span class="text-muted">posted at <%= photo.created_at %></span>
+        </div>
+        <div>
+          <p><%= photo.content %></p>
+        </div>
+      </div>
+    </li>
+  <% end %>
+  <%= paginate photos %>
+</ul>
