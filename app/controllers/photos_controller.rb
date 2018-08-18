@@ -14,7 +14,6 @@ class PhotosController < ApplicationController
   end
 
   def create
-    # @photo = Photo.new(photo_params)
     @photo = current_user.photos.build(photo_params)
     #binding.pry
     if @photo.save    
@@ -30,7 +29,7 @@ class PhotosController < ApplicationController
   def destroy
     @photo.destroy
 
-    flash[:success] = 'photo は正常に削除されました'
+    flash[:success] = '写真 は正常に削除されました'
     redirect_to photos_url    
   end
   

@@ -3,6 +3,7 @@
   <% @photos.each do |photo| %>
     <%= link_to(photo) do %>
       <%= image_tag photo.image.try!(:thumb) %>
+      <!--%= link_to '削除する', @photo, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger' %>
     <% end %>
   <% end %>
 
