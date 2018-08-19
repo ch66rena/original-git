@@ -9,10 +9,11 @@ class CommentsController < ApplicationController
   end
 
   def new
-
+    @comment = Comment.new
   end
 
   def create
+    binding.pry
     @comment = current_user.comments.build(comment_params)
     @photo = @comment.photo
     if @comment.save

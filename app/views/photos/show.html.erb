@@ -11,7 +11,7 @@
 <%= form_for(@comment) do |f| %>
   <%= f.hidden_field :photo_id %> 
   <%= f.text_area :content %>
-  <%= f.submit %>
+  <%= f.submit 'コメントする', class: 'btn btn-primary' %>
 <% end %>
 
 <ul>

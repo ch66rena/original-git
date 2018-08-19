@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-  
+
   def index
 
   end
@@ -10,16 +10,14 @@ class PhotosController < ApplicationController
     @comments = @photo.comments
   end
 
-
-
   def new
     @user = current_user
     @photo = Photo.new
+    @comment = Comment.new
   end
 
   def create
     @photo = current_user.photos.build(photo_params)
-    #binding.pry
     if @photo.save    
       flash[:success] = '写真 が正常に投稿されました'
       redirect_to @photo
@@ -50,6 +48,10 @@ class PhotosController < ApplicationController
     unless @photo
       redirect_to root_url
     end
+  end
+
+  def comment_params
+    params.require(:photo).permit(:content, :photo_id)
   end
 
 end

@@ -8,12 +8,13 @@
         <img class="media-object img-rounded img-responsive" src="<%= gravatar_url(@user, { size: 500 }) %>" alt="">
       </div>
     </div>
-    <%= link_to '新しい写真の投稿', new_photo_path, class: "btn btn-primary" %>
   </aside>
   <div class="col-xs-8">
     <ul class="nav nav-tabs nav-justified">
-      <li><a href="#">PhotoList</a></li>
-      <li><a href="#">CommentList</a></li>
+      <% if current_user == @user %>
+        <li><a href="#"><%= link_to '新しい写真の投稿', new_photo_path, class: "btn btn-primary" %></a></li>
+        <li><a href="#"><%= link_to '投稿写真一覧', root_path, class: "btn btn-primary" %></a></li>
+      <% end %>
     </ul>
   </div>
 </div>
