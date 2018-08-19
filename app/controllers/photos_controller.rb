@@ -1,12 +1,16 @@
 class PhotosController < ApplicationController
-
+  
   def index
 
   end
 
   def show
     @photo = Photo.find(params[:id])
+    @comment = Comment.new(photo_id: @photo.id)
+    @comments = @photo.comments
   end
+
+
 
   def new
     @user = current_user
@@ -27,17 +31,25 @@ class PhotosController < ApplicationController
   end
 
   def destroy
+    @photo = Photo.find(params[:id])
+    #binding.pry
     @photo.destroy
 
     flash[:success] = '写真 は正常に削除されました'
-    redirect_to photos_url    
+    redirect_to root_url    
   end
   
   private
 
- private
-
   def photo_params
     params.require(:photo).permit(:user_id, :image, :image_cache, :remove_image)
   end
+
+  def correct_user
+    @photo = current_user.photo.find_by(id: params[:id])
+    unless @photo
+      redirect_to root_url
+    end
+  end
+
 end

@@ -1,5 +1,6 @@
 <ul class="media-list">
   <% photos.each do |photo| %>
+    <%= link_to "show", photo %>
     <li class="media">
       <div class="media-left">
         <img class="media-object img-rounded" src="<%= gravatar_url(photo.user, { size: 50 }) %>" alt="">

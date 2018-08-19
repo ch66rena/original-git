@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   post 'articles/upload'
   get 'articles/download'
 
-  resources :photos,only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  resources :photos, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  resources :comments, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 end
